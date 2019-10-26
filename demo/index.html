@@ -45,6 +45,9 @@
             width: 150px;
             height: 150px;
         }
+        .btn:disabled {
+            opacity: 0.3;
+        }
     </style>
 </head>
 
@@ -86,8 +89,8 @@
             <div class="col-sm-12">
                 <h2>Quick demo</h2>
                 <p>
-                    <button type="button" class="btn btn-primary" on-click="['show', 1]">Show first box</button>
-                    <button type="button" class="btn btn-secondary" on-click="['show', 2]">Show second box</button>
+                    <button type="button" class="btn btn-primary" on-click="['show', 1]" {{show == 1 && 'disabled'}}>Show first box</button>
+                    <button type="button" class="btn btn-secondary" on-click="['show', 2]" {{show == 2 && 'disabled'}}>Show second box</button>
                 </p>
             </div>
         </div>
@@ -201,8 +204,8 @@
                     <div class="row mb-3">
                         <div class="col-sm-12">
                             <p>
-                                <button type="button" class="btn btn-primary" on-click="['show_example', 1]">Show first box</button>
-                                <button type="button" class="btn btn-secondary" on-click="['show_example', 2]">Show second box</button>
+                                <button type="button" class="btn btn-primary" on-click="['show_example', 1]" {{show_example == 1 && 'disabled'}}>Show first box</button>
+                                <button type="button" class="btn btn-secondary" on-click="['show_example', 2]" {{show_example == 2 && 'disabled'}}>Show second box</button>
                             </p>
                         </div>
                     </div>
