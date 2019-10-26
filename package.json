@@ -2,10 +2,17 @@
   "name": "ractive-transitions-css",
   "version": "1.0.0",
   "description": "Use css animation classes for in and out transitions",
-  "main": "index.js",
+  "main": "dist/ractive-transitions-css.umd.js",
+  "browser": "dist/ractive-transitions-css.umd.js",
+  "module": "dist/ractive-transitions-css.es.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c"
   },
+  "files": [
+    "src",
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kouts/ractive-transitions-css.git"
@@ -22,8 +29,9 @@
     "url": "https://github.com/kouts/ractive-transitions-css/issues"
   },
   "homepage": "https://github.com/kouts/ractive-transitions-css#readme",
-  "dependencies": {
+  "devDependencies": {
     "ractive": "^1.3.8",
-    "rollup": "^1.25.2"
+    "rollup": "^1.25.2",
+    "rollup-plugin-terser": "^5.1.2"
   }
 }
