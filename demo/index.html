@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="ractive-transitions-css demo page">
+    <meta name="author" content="kouts">
+
+    <title>ractive-transitions-css demo page</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Prism -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css">
+
+    <!-- Animations -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/anicollection@1.0.0/dist/anicollection.min.css" />
+
+    <!-- Custom styles -->
+    <style>
+        body {
+            padding-top: 5rem;
+        }
+        .mb40 {
+            margin-bottom: 40px;
+        }        
+        .code-comment {
+            padding-left:20px;
+        }
+        .jumbotron {
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+        .navbar-nav-svg {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: text-top;
+        }
+        :not(pre) > code[class*="language-"], pre[class*="language-"] {
+            background-color: #f7f7f9;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="javascript:;">ractive-transitions-css</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <!--
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                -->
+            </ul>
+            <form class="form-inline">
+                <a class="nav-link" style="color:#fff;" href="https://github.com/kouts/ractive-transitions-css" target="_blank" rel="noopener" aria-label="ractive-transitions-css GitHub">
+                    <svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 499.36" focusable="false">
+                        <title>ractive-transitions-css at GitHub</title>
+                        <path d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z" fill="currentColor" fill-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://github.com/kouts/ractive-transitions-css/archive/master.zip" class="btn btn-outline-success">Download</a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container" id="app"></div>
+
+    <script type="text/template" id="app-template">
+
+        <div class="jumbotron">
+            <h1>ractive-transitions-css</h1>
+            <p class="lead">Use CSS animation classes for in and out Ractive transitions</p>
+            <p>This page includes basic documentation and examples for the ractive-transitions-css transition</p>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <h2>Quick demo</h2>
+                <p>
+                    <button type="button" class="btn btn-primary" on-click="['show', 1]">Show first box</button>
+                    <button type="button" class="btn btn-secondary" on-click="['show', 2]">Show second box</button>
+                </p>
+            </div>
+        </div>
+
+        <div class="row mb40">
+            <div class="col-sm-12">
+                {{#if show == 1}}
+                    <div class="box bg-success animated" css-in-out="{in: 'bounceInDown', out: 'bounceOutUp'}"></div>
+                {{elseif show == 2 }}
+                    <div class="box bg-warning animated" css-in-out="{in: 'bounceInDown', out: 'bounceOutUp'}"></div>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="row mb40">
+            <div class="col-sm-12">
+                <h2>Install</h2>
+                <h4>ractive-transitions-css comes in both an ES2015 and a UMD module format.</h4>
+                <h5>ES2015</h5>
+                <pre>
+                    <code class="language-js">
+                        npm install ractive-transitions-css --save
+                    </code>
+                </pre>
+                <pre>
+                    <code class="language-js">
+                        import RactiveTransitionsCss from 'ractive-transitions-css';
+                    </code>
+                </pre>                
+
+                <h5>Global - download the repo, extract dist/ractive-transitions-css.umd.js and include it in your page</h5>
+                <pre>
+                    <code class="language-html">
+                        &lt;script type="text/javascript" src="ractive-transitions-css.umd.js"&gt;&lt;/script&gt;
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="row mb40">
+            <div class="col-sm-12">
+                <h2>Basic usage</h2>
+                <h5>ES2015</h5>
+                <h5>Make ractive-transitions-css available to all Ractive instances</h5>
+                <pre>
+                    <code class="language-js">
+                        Ractive.transitions.css = RactiveTransitionsCss;
+                    </code>
+                </pre>
+                <h5>or add the ractive-transitions-css to your Ractive instance</h5>
+                <pre>
+                    <code class="language-js">
+                        var ractive = new Ractive({
+                            ...
+                            transitions: {
+                                css: RactiveTransitionsCss
+                            }
+                            ...
+                        });
+                    </code>
+                </pre>
+
+                <h5>Global</h5>
+                <div class="alert alert-info" role="alert">
+                    ractive-transitions-css gets automatically registered as <span class="bg-light px-2">Ractive.transitions.css</span>.
+                </div>
+
+                <h5>then in your template</h5>
+                <pre>
+                    <code class="language-html" as-code>
+                        <!--
+                        {{#if show}}
+                            <div class="box bg-success animated" css-in-out="{in: 'fadeInDown', out: 'fadeOutUp'}"></div>
+                        {{/if}}
+                        -->
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="row mb40">
+            <div class="col-sm-12">
+                <h2>CSS animations</h2>
+                <p>
+                    ractive-transitions-css is designed so that you can put animation classes from your favorite animation framework like 
+                    <a href="https://daneden.github.io/animate.css/" target="_blank">Animate.css</a>, <a href="http://anicollection.github.io" target="_blank">Anicollection</a> etc, 
+                    as Ractive transitions.
+                </p>
+                <p>
+                    You set your base animation class (usually this is the "animated" class) in the element you wish to animate.<br />
+                    Then define your intro and outro animation classes for the element, using the <span class="bg-secondary text-white px-2">css-in-out</span> attribute 
+                    and passing to it an options Object that defines the intro and outro classes you want to use.
+                </p>
+
+                <h5>Examples using Anicollection CSS classes</h5>
+                <form>
+                    <div class="row">
+                        <div class="col form-group">
+                            <label>Select intro class</label>
+                            <select class="form-control" value="{{inClass}}">
+                                {{>animation_options}}
+                            </select>
+                        </div>
+                        <div class="col form-group">
+                            <label>Select outro class</label>
+                            <select class="form-control" value="{{outClass}}">
+                                {{>animation_options}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <p>
+                                <button type="button" class="btn btn-primary" on-click="['show_example', 1]">Show first box</button>
+                                <button type="button" class="btn btn-secondary" on-click="['show_example', 2]">Show second box</button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mb40">
+                        <div class="col-sm-12">
+                            {{#if show_example == 1}}
+                                <div class="box bg-success animated" css-in-out="{in: inClass, out: outClass}"></div>
+                            {{elseif show_example == 2}}
+                                <div class="box bg-warning animated" css-in-out="{in: inClass, out: outClass}"></div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </form>
+
+                {{#partial animation_options}}
+                    <optgroup label="Attention Seekers">
+                        {{#each lovs.attention_seekers}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Bouncing Entrances">
+                        {{#each lovs.bouncing_entrances}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Bouncing Exits">
+                        {{#each lovs.bouncing_exits}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Fading Entrances">
+                        {{#each lovs.fading_entrances}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Fading Exits">
+                        {{#each lovs.fading_exits}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Flippers">
+                        {{#each lovs.flippers}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Lightspeed">
+                        {{#each lovs.lightspeed}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Rotating">
+                        {{#each lovs.rotating}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>                    
+                    <optgroup label="Rotating Entrances">
+                        {{#each lovs.rotating_entrances}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Rotating Exits">
+                        {{#each lovs.rotating_exits}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Sliding Entrances">
+                        {{#each lovs.sliding_entrances}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Sliding Exits">
+                        {{#each lovs.sliding_exits}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Zooming Entrances">
+                        {{#each lovs.zooming_entrances}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Zooming Exits">
+                        {{#each lovs.zooming_exits}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                    <optgroup label="Specials">
+                        {{#each lovs.specials}}
+                            <option value="{{value}}">{{text}}</option>
+                        {{/each}}
+                    </optgroup>
+                {{/partial}}
+            </div>
+        </div>
+
+        <div class="row mb40">
+            <div class="col-sm-12">
+                <h2>Options</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>in</td>
+                            <td>CSS class to use as intro class</td>
+                            <td>String</td>
+                            <td>r-in-class</td>
+                        </tr>
+                        <tr>
+                            <td>out</td>
+                            <td>CSS class to use as outro class
+                            </td>
+                            <td>String</td>
+                            <td>r-in-out</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mb40">
+            <div class="col-sm-12">
+                <h2>Changelog</h2>
+                <h5>version 1.0.0</h5>
+                <ul>
+                    <li>Initial release</li>
+                </ul>
+            </div>
+        </div>
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
+    <script src="../dist/ractive-transitions-css.umd.js"></script>
+
+    <script type="text/javascript">
+        function findComments(el) {
+            var arr = [];
+            for (var i = 0; i < el.childNodes.length; i++) {
+                var node = el.childNodes[i];
+                if (node.nodeType === 8) {
+                    arr.push(node);
+                } else {
+                    arr.push.apply(arr, findComments(node));
+                }
+            }
+            return arr;
+        };
+
+        Ractive.decorators.code = function(node){
+            var comments = findComments(node);
+            for (var i = 0; i < comments.length; i++) {
+                node.appendChild(document.createTextNode(comments[i].nodeValue));
+            };
+            Prism.highlightElement(node);
+            return {
+                teardown: function(){
+                }
+            }        
+        }
+
+        Ractive.decorators.prism = function(node){
+            Prism.highlightElement(node);
+            return {
+                teardown: function(){
+                }
+            }        
+        }        
+
+        var ractive = new Ractive({
+            stripComments: false,
+            target: '#app',
+            template: '#app-template',
+            data: {
+                show: 1,
+                show_example: 1,
+                inClass: 'fadeInDown',
+                outClass: 'fadeOutUp',
+                lovs: {
+                    attention_seekers: [
+                        {
+                            value: "bounce",
+                            text: "bounce"
+                        },
+                        {
+                            value: "flash",
+                            text: "flash"
+                        },
+                        {
+                            value: "pulse",
+                            text: "pulse"
+                        },
+                        {
+                            value: "rubberBand",
+                            text: "rubberBand"
+                        },
+                        {
+                            value: "shake",
+                            text: "shake"
+                        },
+                        {
+                            value: "swing",
+                            text: "swing"
+                        },
+                        {
+                            value: "tada",
+                            text: "tada"
+                        },
+                        {
+                            value: "wobble",
+                            text: "wobble"
+                        }
+                    ],
+                    bouncing_entrances: [
+                        {
+                            value: "bounceIn",
+                            text: "bounceIn"
+                        },
+                        {
+                            value: "bounceInDown",
+                            text: "bounceInDown"
+                        },
+                        {
+                            value: "bounceInLeft",
+                            text: "bounceInLeft"
+                        },
+                        {
+                            value: "bounceInRight",
+                            text: "bounceInRight"
+                        },
+                        {
+                            value: "bounceInUp",
+                            text: "bounceInUp"
+                        }
+                    ],
+                    bouncing_exits: [
+                        {
+                            value: "bounceOut",
+                            text: "bounceOut"
+                        },
+                        {
+                            value: "bounceOutDown",
+                            text: "bounceOutDown"
+                        },
+                        {
+                            value: "bounceOutLeft",
+                            text: "bounceOutLeft"
+                        },
+                        {
+                            value: "bounceOutRight",
+                            text: "bounceOutRight"
+                        },
+                        {
+                            value: "bounceOutUp",
+                            text: "bounceOutUp"
+                        }
+                    ],
+                    fading_entrances: [
+                        {
+                            value: "fadeIn",
+                            text: "fadeIn"
+                        },
+                        {
+                            value: "fadeInDown",
+                            text: "fadeInDown"
+                        },
+                        {
+                            value: "fadeInDownBig",
+                            text: "fadeInDownBig"
+                        },
+                        {
+                            value: "fadeInLeft",
+                            text: "fadeInLeft"
+                        },
+                        {
+                            value: "fadeInLeftBig",
+                            text: "fadeInLeftBig"
+                        },
+                        {
+                            value: "fadeInRight",
+                            text: "fadeInRight"
+                        },
+                        {
+                            value: "fadeInRightBig",
+                            text: "fadeInRightBig"
+                        },
+                        {
+                            value: "fadeInUp",
+                            text: "fadeInUp"
+                        },
+                        {
+                            value: "fadeInUpBig",
+                            text: "fadeInUpBig"
+                        }
+                    ],
+                    fading_exits: [
+                        {
+                            value: "fadeOut",
+                            text: "fadeOut"
+                        },
+                        {
+                            value: "fadeOutDown",
+                            text: "fadeOutDown"
+                        },
+                        {
+                            value: "fadeOutDownBig",
+                            text: "fadeOutDownBig"
+                        },
+                        {
+                            value: "fadeOutLeft",
+                            text: "fadeOutLeft"
+                        },
+                        {
+                            value: "fadeOutLeftBig",
+                            text: "fadeOutLeftBig"
+                        },
+                        {
+                            value: "fadeOutRight",
+                            text: "fadeOutRight"
+                        },
+                        {
+                            value: "fadeOutRightBig",
+                            text: "fadeOutRightBig"
+                        },
+                        {
+                            value: "fadeOutUp",
+                            text: "fadeOutUp"
+                        },
+                        {
+                            value: "fadeOutUpBig",
+                            text: "fadeOutUpBig"
+                        }
+                    ],
+                    flippers: [
+                        {
+                            value: "flip",
+                            text: "flip"
+                        },
+                        {
+                            value: "flipInX",
+                            text: "flipInX"
+                        },
+                        {
+                            value: "flipInY",
+                            text: "flipInY"
+                        },
+                        {
+                            value: "flipOutX",
+                            text: "flipOutX"
+                        },
+                        {
+                            value: "flipOutY",
+                            text: "flipOutY"
+                        }
+                    ],
+                    lightspeed: [
+                        {
+                            value: "lightSpeedIn",
+                            text: "lightSpeedIn"
+                        },
+                        {
+                            value: "lightSpeedOut",
+                            text: "lightSpeedOut"
+                        }
+                    ],
+                    rotating: [
+                        {
+                            value: "rotate",
+                            text: "rotate"
+                        },
+                        {
+                            value: "rotateDownLeft",
+                            text: "rotateDownLeft"
+                        },
+                        {
+                            value: "rotateDownRight",
+                            text: "rotateDownRight"
+                        },
+                        {
+                            value: "rotateUpLeft",
+                            text: "rotateUpLeft"
+                        },
+                        {
+                            value: "rotateUpRight",
+                            text: "rotateUpRight"
+                        }
+                    ],
+                    rotating_entrances: [
+                        {
+                            value: "rotateIn",
+                            text: "rotateIn"
+                        },
+                        {
+                            value: "rotateInDownLeft",
+                            text: "rotateInDownLeft"
+                        },
+                        {
+                            value: "rotateInDownRight",
+                            text: "rotateInDownRight"
+                        },
+                        {
+                            value: "rotateInUpLeft",
+                            text: "rotateInUpLeft"
+                        },
+                        {
+                            value: "rotateInUpRight",
+                            text: "rotateInUpRight"
+                        }
+                    ],
+                    rotating_exits: [
+                        {
+                            value: "rotateOut",
+                            text: "rotateOut"
+                        },
+                        {
+                            value: "rotateOutDownLeft",
+                            text: "rotateOutDownLeft"
+                        },
+                        {
+                            value: "rotateOutDownRight",
+                            text: "rotateOutDownRight"
+                        },
+                        {
+                            value: "rotateOutUpLeft",
+                            text: "rotateOutUpLeft"
+                        },
+                        {
+                            value: "rotateOutUpRight",
+                            text: "rotateOutUpRight"
+                        }
+                    ],
+                    sliding_entrances: [
+                        {
+                            value: "slideInUp",
+                            text: "slideInUp"
+                        },
+                        {
+                            value: "slideInDown",
+                            text: "slideInDown"
+                        },
+                        {
+                            value: "slideInLeft",
+                            text: "slideInLeft"
+                        },
+                        {
+                            value: "slideInRight",
+                            text: "slideInRight"
+                        }
+                    ],
+                    sliding_exits: [
+                        {
+                            value: "slideOutUp",
+                            text: "slideOutUp"
+                        },
+                        {
+                            value: "slideOutDown",
+                            text: "slideOutDown"
+                        },
+                        {
+                            value: "slideOutLeft",
+                            text: "slideOutLeft"
+                        },
+                        {
+                            value: "slideOutRight",
+                            text: "slideOutRight"
+                        }
+                    ],
+                    zooming_entrances: [
+                        {
+                            value: "zoomIn",
+                            text: "zoomIn"
+                        },
+                        {
+                            value: "zoomInDown",
+                            text: "zoomInDown"
+                        },
+                        {
+                            value: "zoomInLeft",
+                            text: "zoomInLeft"
+                        },
+                        {
+                            value: "zoomInRight",
+                            text: "zoomInRight"
+                        },
+                        {
+                            value: "zoomInUp",
+                            text: "zoomInUp"
+                        }
+                    ],
+                    zooming_exits: [
+                        {
+                            value: "zoomOut",
+                            text: "zoomOut"
+                        },
+                        {
+                            value: "zoomOutDown",
+                            text: "zoomOutDown"
+                        },
+                        {
+                            value: "zoomOutLeft",
+                            text: "zoomOutLeft"
+                        },
+                        {
+                            value: "zoomOutRight",
+                            text: "zoomOutRight"
+                        },
+                        {
+                            value: "zoomOutUp",
+                            text: "zoomOutUp"
+                        }
+                    ],
+                    specials: [
+                        {
+                            value: "hinge",
+                            text: "hinge"
+                        },
+                        {
+                            value: "rollIn",
+                            text: "rollIn"
+                        },
+                        {
+                            value: "rollOut",
+                            text: "rollOut"
+                        }
+                    ]
+                }
+            },
+            on: {
+                show: function(ctx, toShow){
+                    if(toShow !== this.get('show')){
+                        this.set('show', null).then(function(){
+                            this.set('show', toShow);
+                        }.bind(this));         
+                    }
+                },
+                show_example: function(ctx, toShow){
+                    if(toShow !== this.get('show_example')){
+                        this.set('show_example', null).then(function(){
+                            this.set('show_example', toShow);
+                        }.bind(this));         
+                    }
+                }                
+            }
+        });
+    </script>
+
+</body>
+</html>
