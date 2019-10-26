@@ -2,7 +2,7 @@
 Use CSS animation classes for in and out Ractive transitions
 
 Click here for documentation and examples
-https://kouts.github.io/ractive-transition-css/demo/
+https://kouts.github.io/ractive-transitions-css/demo/
 
 # Development
 
