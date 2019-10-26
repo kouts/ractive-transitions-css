@@ -1,11 +1,12 @@
 {
   "name": "ractive-transitions-css",
   "version": "1.0.0",
-  "description": "Use css animation classes for in and out transitions",
+  "description": "Use CSS animation classes for in and out Ractive transitions",
   "main": "dist/ractive-transitions-css.umd.js",
   "browser": "dist/ractive-transitions-css.umd.js",
   "module": "dist/ractive-transitions-css.es.js",
   "scripts": {
+    "watch": "rollup -c -w",
     "build": "rollup -c"
   },
   "files": [
